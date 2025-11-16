@@ -35,7 +35,7 @@ export default function Home() {
 
                 <Button className="w-full text-2xl md:w-8/10">
                     <Link
-                        href="/"
+                        href="https://github.com/sameerbhagtanidev/haalchaal"
                         className="flex w-full items-center justify-center gap-3"
                     >
                         <FaGithub className="size-6" />
