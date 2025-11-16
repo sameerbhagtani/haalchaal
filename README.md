@@ -1,22 +1,64 @@
-# Backend Routes
+# **HaalChaal**
 
-## User
+### **_Check-in & Connect with Friends_**
 
--   GET `/api/users/check-username`
--   GET `/api/users/status`
--   POST `/api/users/send-token`
--   POST `/api/users/verify-token`
--   POST `/api/users/onboard`
--   POST `/api/users/logout`
--   GET `/api/users/google`
--   GET `/api/users/google/callback`
+HaalChaal is a minimal, modern, and fast one-to-one chat application where users can easily discover friends, send requests, and start chatting instantly.  
+Ask your friends about their _“HaalChaal”_ (well-being) in real time!
 
-## Relation
+---
 
--   GET `/api/relations/friends`
--   DELETE `/api/relations/friends/:relationId`
+## 🌟 **Features**
 
--   GET `/api/relations/requests`
--   POST `/api/relations/requests`
--   DELETE `/api/relations/requests/:relationId`
--   PATCH `/api/relations/requests/:relationId`
+### 👥 Friending System
+
+-   Send friend requests to other users
+-   Accept or reject incoming requests
+-   Remove friends anytime
+
+### 💬 Chat Experience
+
+-   One-to-one instant messaging
+-   Typing indicator for real-time feedback
+-   Seen indicator when messages are viewed
+-   Optimistic UI — messages appear instantly on sender’s screen
+-   Paginated chat history — older chats load in chunks of 20 while scrolling up
+
+### 🔐 Authentication
+
+-   Passwordless login via email (OTP-based)
+-   Google OAuth login
+-   Secure JWT authentication flow
+
+### 🎨 UI & UX
+
+-   Clean, minimal, and fully responsive design
+-   Built using **Tailwind CSS** & **shadcn/ui**
+
+---
+
+## 🛠️ **Tech Stack**
+
+### **Frontend**
+
+-   Next.js
+-   TypeScript
+-   Tailwind CSS
+-   shadcn/ui
+
+### **Backend**
+
+-   Express.js
+-   TypeScript
+-   MongoDB (Mongoose)
+
+### **Real-Time**
+
+-   Socket.io
+
+---
+
+## 🌐 **Try it Out**
+
+👉 [Try HaalChaal](https://haalchaal.sameerbhagtani.dev)
+
+---
