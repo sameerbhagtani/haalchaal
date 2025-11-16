@@ -1,21 +1,34 @@
-import transporter from "../config/mailProvider.config.js";
+import axios from "axios";
 import AppError from "./AppError.util.js";
 import { LOGIN_TEMPLATE } from "./mailTemplates.util.js";
 
 export async function sendLoginEmail(email: string, loginToken: string) {
-    console.log("preparing...");
+    const apiKey = process.env.BREVO_API_KEY;
+    const senderEmail = process.env.BREVO_SENDER_MAIL;
 
-    const mailOptions = {
-        from: `"HaalChaal" <${process.env.TRANSACTIONAL_DOMAIN}>`,
-        to: email,
-        subject: "Your Login Code",
-        html: LOGIN_TEMPLATE.replace("{loginToken}", loginToken),
-    };
+    if (!apiKey || !senderEmail) {
+        throw new AppError(500, "Email service not configured");
+    }
+
+    const htmlContent = LOGIN_TEMPLATE.replace("{loginToken}", loginToken);
 
     try {
-        await transporter.sendMail(mailOptions);
+        await axios.post(
+            "https://api.brevo.com/v3/smtp/email",
+            {
+                sender: { name: "HaalChaal", email: senderEmail },
+                to: [{ email }],
+                subject: "Your Login Code",
+                htmlContent,
+            },
+            {
+                headers: {
+                    "api-key": apiKey,
+                    "Content-Type": "application/json",
+                },
+            }
+        );
     } catch (err: any) {
-        console.log(err);
         throw new AppError(500, err);
     }
 }
